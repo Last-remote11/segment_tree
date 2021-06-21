@@ -31,11 +31,11 @@ print(seg_tree)
 # 0~7 찾을합: 1~3(2+5+4)
 def range_sum(seg_tree, qlow, qhigh, low, high, pos):
     if qlow <= low and qhigh >= high:
-        # 쿼리범위가 현재 범위 안에 완전히 포함됨(total overlap)
+        # 현재범위가 쿼리범위에 완전히 포함됨(total overlap)
         return seg_tree[pos]
 
     if qlow > high or qhigh < low:
-        # 쿼리범위가 현재 범위에 아에 포함 안됨(no overlap)
+        # 현재범위가 쿼리범위에 아예 포함 안됨(no overlap)
         return 0
     mid = int((low + high) / 2)
     return range_sum(seg_tree, qlow, qhigh, low, mid, pos * 2 + 1) + range_sum(
